@@ -77,4 +77,16 @@ i{
 .icon{
   display: flex;
   gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.check{
+  cursor: pointer;
+  height: 20px;
+}
+.show{
+  opacity: 1;
+}
+.soft{
+  opacity: 0.3;
 }
