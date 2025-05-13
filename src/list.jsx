@@ -3,12 +3,11 @@ import './App.css'
 
 function List(props){
     const text = props.textInput
-    const [status,setStatus] = useState(false)
-    const [idsoft,setIdSoft] = useState('')
+    const [listStatus,setListStatus] = useState(Array(text.length).fill(false))
     return(
         <ul>
             {text.map((e,index)=>{
-                return(<li key={index} className={idsoft === index ? status ? 'soft' : 'show' : null}>{e}
+                return(<li key={index} className={listStatus[index] ? 'soft' : 'show' }>{e}
                     <div className='icon'>
                         <i className="fa-solid fa-pen fa-xs" onClick={()=> props.editfunction(e,index)}></i> 
                         <i className="fa-solid fa-trash fa-xs" onClick={()=>props.delfunction(index)}></i>
@@ -20,8 +19,9 @@ function List(props){
         </ul>
     )
     function setSoft(i){
-        setStatus(!status)
-        setIdSoft(i)
+        const newList = [...listStatus];
+        newList[i] = !newList[i]
+        setListStatus(newList)
     }
 }
 
